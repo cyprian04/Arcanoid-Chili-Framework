@@ -9,7 +9,7 @@ public:
 	RectF(const Vec2& LeftTop, const Vec2& bottomRight);
 	RectF(const Vec2& LeftTop, float width, float height);
 	bool IsOverLapping(const RectF& other);
-private:
+public:
 	float left;
 	float right;
 	float top;
