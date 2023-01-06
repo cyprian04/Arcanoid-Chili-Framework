@@ -26,6 +26,7 @@
 #include "RectF.h"
 #include "Brick.h"
 #include "Ball.h"
+#include "Sound.h"
 class Game
 {
 public:
@@ -47,5 +48,6 @@ private:
 	RectF walls;
 	Brick brick;
 	Ball ball;
+	Sound soundPad;
 	/********************************/
 };

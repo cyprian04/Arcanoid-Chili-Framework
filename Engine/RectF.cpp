@@ -1,6 +1,6 @@
 #pragma once
 #include "RectF.h"
-
+				
 RectF::RectF(float left_in, float right_in, float top_in, float bottom_in)
 	:
 	left(left_in),
@@ -18,13 +18,13 @@ RectF::RectF(const Vec2& LeftTop, const Vec2& bottomRight)
 
 RectF::RectF(const Vec2& LeftTop, float width, float height)
 	:
-	RectF(LeftTop.x, LeftTop.y, width, height)
+	RectF(LeftTop.x, LeftTop.x + width,  LeftTop.y, LeftTop.y + height)
 {
 }
 
 bool RectF::IsOverLapping(const RectF& other)
 {
-	return other.top > top && other.bottom < bottom &&
+	return other.top < bottom && other.bottom > top &&
 		   other.left < right && other.right > left;
 }
 
