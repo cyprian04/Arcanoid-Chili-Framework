@@ -8,7 +8,7 @@ Brick::Brick( const RectF& rect_in, Color c)
 {
 }
 
-void Brick::Draw(Graphics& gfx)
+void Brick::Draw(Graphics& gfx) const
 {
 	gfx.DrawRect(rect, c);
 }
