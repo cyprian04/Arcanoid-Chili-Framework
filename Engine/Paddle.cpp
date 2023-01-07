@@ -13,6 +13,22 @@ void Paddle::Draw(Graphics& gfx) const
 	gfx.DrawRect(int(rect.left + wingWidth), int(rect.top) ,int(rect.right - wingWidth), int(rect.bottom), Colors::White);
 }
 
+void Paddle::DoWallsCollision(RectF& walls)
+{
+	if (rect.left <= walls.left)
+	{
+		float tmp = walls.left - rect.left;
+		rect.left += tmp;
+		rect.right += tmp;
+	}
+	if (rect.right >= walls.right)
+	{
+		float tmp = walls.right - rect.right;
+		rect.left += tmp;
+		rect.right += tmp;
+	}
+}
+
 void Paddle::DoPaddleCollision(Ball& ball)
 {
 	if (rect.IsOverLapping(ball.GetRect()))
