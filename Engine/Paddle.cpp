@@ -12,3 +12,32 @@ void Paddle::Draw(Graphics& gfx) const
 	gfx.DrawRect(rect, Colors::Red);
 	gfx.DrawRect(int(rect.left + wingWidth), int(rect.top) ,int(rect.right - wingWidth), int(rect.bottom), Colors::White);
 }
+
+void Paddle::DoPaddleCollision(Ball& ball)
+{
+	if (rect.IsOverLapping(ball.GetRect()))
+	{
+		if (ball.GetRect().right > rect.right || ball.GetRect().left < rect.left)
+		{
+			ball.ReboundX();
+		}
+		if (ball.GetRect().top > rect.top || ball.GetRect().bottom < rect.bottom)
+		{
+			ball.ReboundY();
+		}
+	}
+}
+
+void Paddle::Update(const Keyboard& kbd)
+{
+	if (kbd.KeyIsPressed(VK_LEFT))
+	{
+		rect.left-=3;
+		rect.right-=3;
+	}
+	if (kbd.KeyIsPressed(VK_RIGHT))
+	{
+		rect.left+=3;
+		rect.right+=3;
+	}
+}
