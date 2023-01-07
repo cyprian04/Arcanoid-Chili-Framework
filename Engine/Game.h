@@ -47,9 +47,14 @@ private:
 	/********************************/
 	/*  User Variables              */
 	RectF walls;
-	Brick brick;
 	Ball ball;
 	Sound soundPad;
 	Paddle paddle;
+	 float width = 50.0f;
+	 float height = 20.0f;
+	static constexpr int row = 12;
+	static constexpr int col = 4;
+	static constexpr int nBricks = row * col;
+	Brick bricks[nBricks];
 	/********************************/
 };
