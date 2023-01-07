@@ -26,7 +26,7 @@ Game::Game( MainWindow& wnd )
 	wnd( wnd ),
 	gfx( wnd ),
 	walls(0.0f,float(gfx.ScreenWidth) ,0.0f , float(gfx.ScreenHeight)),
-	ball(Vec2(210.0f, 250.0f), Vec2(2.0f, 2.0f), Colors::Red),
+	ball(Vec2(210.0f, 250.0f), Vec2(2.0f, 3.0f), Colors::Red),
 	paddle(RectF(Vec2(400.0f, 500.0f), 100.0f, 20.0f)),
 	soundPad(L"Sounds\\arkpad.wav")
 {
