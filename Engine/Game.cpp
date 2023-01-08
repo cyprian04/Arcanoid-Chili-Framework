@@ -32,12 +32,7 @@ Game::Game( MainWindow& wnd )
 {
 	const Vec2 TopLeft(100.0f, 50.0f);
 
-	Color color[4] = {
-		{Colors::Green},
-		{Colors::Red},
-		{Colors::Blue},
-		{Colors::Magenta}
-	};
+	Color color[4] = { Colors::Green, Colors::Red, Colors::Blue, Colors::Magenta };
 
 	int i = 0;
 	for (int x = 0; x < row; x++)
