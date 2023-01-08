@@ -29,8 +29,9 @@ void Paddle::DoWallsCollision(RectF& walls)
 	}
 }
 
-void Paddle::DoPaddleCollision(Ball& ball)
+void Paddle::DoBallCollision(Ball& ball)
 {
+
 	if (rect.IsOverLapping(ball.GetRect()))
 	{
 		if (ball.GetRect().right > rect.right || ball.GetRect().left < rect.left)
@@ -48,12 +49,12 @@ void Paddle::Update(const Keyboard& kbd)
 {
 	if (kbd.KeyIsPressed(VK_LEFT))
 	{
-		rect.left-=3;
-		rect.right-=3;
+		rect.left-=6;
+		rect.right-=6;
 	}
 	if (kbd.KeyIsPressed(VK_RIGHT))
 	{
-		rect.left+=3;
-		rect.right+=3;
+		rect.left+=6;
+		rect.right+=6;
 	}
 }
