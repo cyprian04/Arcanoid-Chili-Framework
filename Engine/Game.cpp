@@ -24,7 +24,8 @@
 Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
-	gfx( wnd )
+	gfx( wnd ),
+	walls(0.0f, Graphics::ScreenWidth, 0.0f, Graphics::ScreenHeight)
 {
 }
 
