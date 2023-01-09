@@ -10,7 +10,7 @@ public:
 	void Draw(Graphics& gfx)const;
 	void DoWallsCollision(RectF& walls);
 	bool DoBallCollision(Ball& ball);
-	void Update(const Keyboard& kbd);
+	void Update(const Keyboard& kbd, float dt);
 	void ResetColldown();
 private:
 	static constexpr float wingWidth = 20.0f;

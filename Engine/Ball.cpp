@@ -9,9 +9,9 @@ Ball::Ball(const Vec2& pos_in, const Vec2& vel_in,  Color c)
 {
 }
 
-void Ball::Update()
+void Ball::Update(float dt)
 {
-	pos += vel;
+	pos += vel * dt;
 }
 
 void Ball::Draw(Graphics& gfx) const

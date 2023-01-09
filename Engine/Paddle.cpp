@@ -56,12 +56,12 @@ bool Paddle::DoBallCollision(Ball& ball)
 	return false;
 }
 
-void Paddle::Update(const Keyboard& kbd)
+void Paddle::Update(const Keyboard& kbd, float dt)
 {
 	if (kbd.KeyIsPressed(VK_LEFT))
 	{
-		rect.left-=6;
-		rect.right-=6;
+		rect.left-=6 * dt;
+		rect.right-=6 * dt;
 	}
 	if (kbd.KeyIsPressed(VK_RIGHT))
 	{

@@ -26,7 +26,7 @@ Game::Game( MainWindow& wnd )
 	wnd( wnd ),
 	gfx( wnd ),
 	walls(0.0f,float(gfx.ScreenWidth) ,0.0f , float(gfx.ScreenHeight)),
-	ball(Vec2(210.0f, 250.0f), Vec2(4.0f, 6.0f), Colors::Red),
+	ball(Vec2(210.0f, 250.0f), Vec2(3.0f, -4.0f), Colors::Red),
 	paddle(RectF(Vec2(400.0f, 500.0f), 100.0f, 20.0f)),
 	soundPad(L"Sounds\\arkpad.wav"),
 	soundBrick(L"Sounds\\arkbrick.wav")
@@ -48,17 +48,23 @@ Game::Game( MainWindow& wnd )
 
 void Game::Go()
 {
-	gfx.BeginFrame();	
-	UpdateModel();
+	gfx.BeginFrame();
+
+	float elapsedTime = ft.Mark();
+	if (elapsedTime > 0.0f)
+	{
+		const float dt = std::min(0.025f, elapsedTime);
+		UpdateModel(dt);
+	}
 	ComposeFrame();
 	gfx.EndFrame();
 }
 
-void Game::UpdateModel()
+void Game::UpdateModel(float dt)
 {
-	paddle.Update(wnd.kbd);
+	paddle.Update(wnd.kbd, dt * 60.0f);
 	paddle.DoWallsCollision(walls);
-	ball.Update();
+	ball.Update(dt * 60.0f);
 
 	int brickIndex;
 	float LenghtSq;

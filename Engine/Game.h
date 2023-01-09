@@ -28,6 +28,7 @@
 #include "Ball.h"
 #include "Sound.h"
 #include "Paddle.h"
+#include "FrameTimer.h"
 class Game
 {
 public:
@@ -37,7 +38,7 @@ public:
 	void Go();
 private:
 	void ComposeFrame();
-	void UpdateModel();
+	void UpdateModel(float dt);
 	/********************************/
 	/*  User Functions              */
 	/********************************/
@@ -57,5 +58,6 @@ private:
 	static constexpr int col = 4;
 	static constexpr int nBricks = row * col;
 	Brick bricks[nBricks];
+	FrameTimer ft;
 	/********************************/
 };

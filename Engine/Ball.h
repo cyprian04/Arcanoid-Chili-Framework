@@ -7,7 +7,7 @@ class Ball
 {
 public:
 	Ball(const Vec2& pos_in, const Vec2& vel_in, Color c);
-	void Update();
+	void Update(float dt);
 	void Draw(Graphics& gfx) const;
 	bool DoWallsCollision( const RectF& walls);
 	void ReboundX();
