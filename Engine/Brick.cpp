@@ -37,7 +37,7 @@ void Brick::ExecuteBallCollision(Ball& ball)
 	}
 	else
 	{
-		ball.ReboundY();
+		ball.ReboundX();
 	}
 	destroyed = true;
 }

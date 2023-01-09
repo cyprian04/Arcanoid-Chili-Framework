@@ -9,10 +9,12 @@ public:
 	Paddle(const RectF& rect_in);
 	void Draw(Graphics& gfx)const;
 	void DoWallsCollision(RectF& walls);
-	void DoBallCollision(Ball& ball);
+	bool DoBallCollision(Ball& ball);
 	void Update(const Keyboard& kbd);
+	void ResetColldown();
 private:
 	static constexpr float wingWidth = 20.0f;
 	RectF rect;
+	bool IsColldown = false;
 };
 

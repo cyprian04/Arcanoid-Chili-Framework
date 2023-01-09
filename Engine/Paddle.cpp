@@ -1,5 +1,6 @@
 #pragma once
 #include "Paddle.h"
+#include <cmath>
 
 Paddle::Paddle(const RectF& rect_in)
 	:
@@ -29,20 +30,30 @@ void Paddle::DoWallsCollision(RectF& walls)
 	}
 }
 
-void Paddle::DoBallCollision(Ball& ball)
+bool Paddle::DoBallCollision(Ball& ball)
 {
-
-	if (rect.IsOverLapping(ball.GetRect()))
+	if (!IsColldown)
 	{
-		if (ball.GetRect().right > rect.right || ball.GetRect().left < rect.left)
+		if (rect.IsOverLapping(ball.GetRect()))
 		{
-			ball.ReboundX();
-		}
-		if (ball.GetRect().top > rect.top || ball.GetRect().bottom < rect.bottom)
-		{
-			ball.ReboundY();
+			Vec2 ballPos = ball.GetPosition();
+			if (std::signbit(ball.GetVelocity().x) == std::signbit((ballPos - rect.GetCenter()).x))
+			{
+				ball.ReboundY();
+			}
+			else if (ball.GetRect().right >= rect.left && ball.GetRect().left <= rect.right)
+			{
+				ball.ReboundY();
+			}
+			else
+			{
+				ball.ReboundY();
+			}
+			IsColldown = true;
+			return true;
 		}
 	}
+	return false;
 }
 
 void Paddle::Update(const Keyboard& kbd)
@@ -57,4 +68,9 @@ void Paddle::Update(const Keyboard& kbd)
 		rect.left+=6;
 		rect.right+=6;
 	}
+}
+
+void Paddle::ResetColldown()
+{
+	IsColldown = false;
 }
