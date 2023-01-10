@@ -22,7 +22,7 @@ RectF::RectF(const Vec2& LeftTop, float height, float width)
 
 RectF RectF::GetPosition(const Vec2& center, float halfWidth, float halfHeight)
 {
-		const Vec2 half(halfWidth, halfHeight);
+	const Vec2 half(halfWidth, halfHeight);
 	return RectF(center - half, center + half);
 }
 
