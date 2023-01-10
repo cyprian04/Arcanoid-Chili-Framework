@@ -19,3 +19,15 @@ RectF::RectF(const Vec2& LeftTop, float height, float width)
 	RectF(LeftTop, LeftTop + Vec2(width, height))
 {
 }
+
+RectF RectF::GetPosition(const Vec2& center, float halfWidth, float halfHeight)
+{
+		const Vec2 half(halfWidth, halfHeight);
+	return RectF(center - half, center + half);
+}
+
+bool RectF::isOverllaping(const RectF& rect) const
+{
+	return rect.left < right && rect.right > left &&
+		   rect.top < bottom && rect.bottom > top;
+}
