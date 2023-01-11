@@ -6,7 +6,7 @@ Paddle::Paddle( const RectF& rect_in)
 {
 }
 
-void Paddle::Draw(Graphics& gfx) 
+void Paddle::Draw(Graphics& gfx) const
 {
 	gfx.DrawRect(rect, Colors::LightGray);
 
@@ -14,18 +14,18 @@ void Paddle::Draw(Graphics& gfx)
 
 }
 
-void Paddle::Update(const Keyboard& kbd)
+void Paddle::Update(const Keyboard& kbd, float dt)
 {
 	if (kbd.KeyIsPressed(VK_LEFT))
 	{
-		rect.left-=5;
-		rect.right-=5;
+		rect.left-=5 * dt;
+		rect.right-=5 * dt;
 	}
 
 	if (kbd.KeyIsPressed(VK_RIGHT))
 	{
-		rect.left += 5;
-		rect.right += 5;
+		rect.left += 5 * dt;
+		rect.right += 5 * dt;
 	}
 }
 
@@ -51,7 +51,7 @@ bool Paddle::DoWallCollision(const RectF& walls)
 	return collided;
 }
 
-bool Paddle::DoBallCollision(Ball& ball) 
+bool Paddle::DoBallCollision(Ball& ball) const
 {
 	RectF ballPos = ball.GetRect();
 	if (rect.isOverllaping(ballPos))

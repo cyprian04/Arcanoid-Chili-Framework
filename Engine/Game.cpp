@@ -45,9 +45,14 @@ void Game::UpdateModel()
 {
 	float dt = ft.Mark();
 	ball.Update(dt * 60);
-	pad.Update(wnd.kbd);
+	pad.Update(wnd.kbd, dt * 60);
+
 	pad.DoWallCollision(walls);
-	pad.DoBallCollision(ball);
+
+	if (pad.DoBallCollision(ball))
+	{
+		soundPad.Play();
+	}
 	if (ball.DoWallCollision(walls))
 	{
 		soundPad.Play();
