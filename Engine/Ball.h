@@ -2,7 +2,6 @@
 #include "RectF.h"
 #include "SpriteCodex.h"
 #include "Graphics.h"
-#include "Vec2.h"
 
 class Ball
 {

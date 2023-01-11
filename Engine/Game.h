@@ -28,6 +28,7 @@
 #include "Ball.h"
 #include "FrameTimer.h"
 #include "Sound.h"
+#include "Paddle.h"
 
 class Game
 {
@@ -52,5 +53,6 @@ private:
 	Ball ball;
 	FrameTimer ft;
 	Sound soundPad;
+	Paddle pad;
 	/********************************/
 };
