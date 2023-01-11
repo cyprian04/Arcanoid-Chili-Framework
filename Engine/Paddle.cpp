@@ -18,14 +18,14 @@ void Paddle::Update(const Keyboard& kbd)
 {
 	if (kbd.KeyIsPressed(VK_LEFT))
 	{
-		rect.left-=3;
-		rect.right-=3;
+		rect.left-=5;
+		rect.right-=5;
 	}
 
 	if (kbd.KeyIsPressed(VK_RIGHT))
 	{
-		rect.left += 3;
-		rect.right += 3;
+		rect.left += 5;
+		rect.right += 5;
 	}
 }
 
@@ -49,4 +49,23 @@ bool Paddle::DoWallCollision(const RectF& walls)
 		collided = true;
 	}
 	return collided;
+}
+
+bool Paddle::DoBallCollision(Ball& ball) 
+{
+	RectF ballPos = ball.GetRect();
+	if (rect.isOverllaping(ballPos))
+	{
+		if (ballPos.left >= rect.left && ballPos.right <= rect.right)
+		{
+			ball.ReboundY();
+			return true;
+		}
+		else
+		{
+			ball.ReboundX();
+			return true;
+		}
+	}
+	return false;
 }

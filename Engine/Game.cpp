@@ -47,7 +47,7 @@ void Game::UpdateModel()
 	ball.Update(dt * 60);
 	pad.Update(wnd.kbd);
 	pad.DoWallCollision(walls);
-
+	pad.DoBallCollision(ball);
 	if (ball.DoWallCollision(walls))
 	{
 		soundPad.Play();
