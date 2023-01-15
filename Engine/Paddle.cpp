@@ -40,7 +40,7 @@ bool Paddle::DoBallCollision(Ball& ball)
 		if (rect.IsOverLapping(ball.GetRect()))
 		{
 			const Vec2 ballPos = ball.GetPosition();
-			if (std::signbit(ball.GetVelocity().x) == std::signbit((ballPos - rect.GetCenter()).x))
+			if (std::signbit(ball.GetVelocity().x) == std::signbit((ballPos - pos).x))
 			{
 				ball.ReboundY();
 			}
