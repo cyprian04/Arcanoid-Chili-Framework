@@ -2,31 +2,33 @@
 #include "Paddle.h"
 #include <cmath>
 
-Paddle::Paddle(const RectF& rect_in)
+Paddle::Paddle(const Vec2& pos_in, float HalfWidth_in, float HalfHeight_in)
 	:
-	rect(rect_in)
+	pos(pos_in),
+	HalfWidth(HalfWidth_in),
+	HalfHeight(HalfHeight_in)
 {
 }
 
 void Paddle::Draw(Graphics& gfx) const
 {
+	const RectF rect = GetRect();
 	gfx.DrawRect(rect, Colors::Red);
 	gfx.DrawRect(int(rect.left + wingWidth), int(rect.top) ,int(rect.right - wingWidth), int(rect.bottom), Colors::White);
 }
 
-void Paddle::DoWallsCollision(RectF& walls)
+void Paddle::DoWallsCollision(const RectF& walls)
 {
+	const RectF rect = GetRect();
 	if (rect.left <= walls.left)
 	{
 		float tmp = walls.left - rect.left;
-		rect.left += tmp;
-		rect.right += tmp;
+		pos.x += tmp;
 	}
 	if (rect.right >= walls.right)
 	{
 		float tmp = walls.right - rect.right;
-		rect.left += tmp;
-		rect.right += tmp;
+		pos.x += tmp;
 	}
 }
 
@@ -34,6 +36,7 @@ bool Paddle::DoBallCollision(Ball& ball)
 {
 	if (!IsColldown)
 	{
+		const RectF rect = GetRect();
 		if (rect.IsOverLapping(ball.GetRect()))
 		{
 			const Vec2 ballPos = ball.GetPosition();
@@ -60,17 +63,20 @@ void Paddle::Update(const Keyboard& kbd, float dt)
 {
 	if (kbd.KeyIsPressed(VK_LEFT))
 	{
-		rect.left-=6 * dt;
-		rect.right-=6 * dt;
+		pos.x -=6 * dt;
 	}
 	if (kbd.KeyIsPressed(VK_RIGHT))
 	{
-		rect.left+=6;
-		rect.right+=6;
+		pos.x+=6 * dt;
 	}
 }
 
 void Paddle::ResetColldown()
 {
 	IsColldown = false;
+}
+
+RectF Paddle::GetRect() const
+{
+	return RectF::FromCenter(pos, HalfWidth, HalfHeight );
 }
