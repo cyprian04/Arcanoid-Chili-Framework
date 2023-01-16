@@ -11,4 +11,8 @@ private:
 	RectF rect;
 	Color c;
 	const float padding = 20.0f;
-};
+	float left;
+	float right;
+	float top;
+	float bottom;
+};	
