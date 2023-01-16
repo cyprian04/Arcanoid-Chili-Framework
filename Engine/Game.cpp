@@ -25,14 +25,14 @@ Game::Game(MainWindow& wnd)
 	:
 	wnd(wnd),
 	gfx(wnd),
-	board(Board(RectF(0.0f, float(gfx.ScreenWidth), 0.0f, float(gfx.ScreenHeight)), Colors::Red)),
+	board(Board(RectF(0.0f, float(gfx.ScreenWidth), 0.0f, float(gfx.ScreenHeight)), Colors::Blue)),
 	ball(Vec2(210.0f, 250.0f), Vec2(4.0f, -6.0f), Colors::Red),
-	paddle(Vec2(400.0f, 500.0f), 30.0f, 8.0f),
+	paddle(Vec2(400.0f, 500.0f), 50.0f, 8.0f),
 	soundPad(L"Sounds\\arkpad.wav"),
 	soundBrick(L"Sounds\\arkbrick.wav")
 {
 	const Vec2 TopLeft(100.0f, 50.0f);
-	Color color[4] = { Colors::Green, Colors::Red, Colors::Blue, Colors::Magenta };
+	Color color[4] = { Colors::Green, Colors::Red, Colors::Yellow, Colors::Magenta };
 
 	int i = 0;
 	for (int x = 0; x < row; x++)
@@ -137,5 +137,6 @@ void Game::ComposeFrame()
 		ball.Draw(gfx);
 		paddle.Draw(gfx);
 		board.DrawBorder(gfx);
+		ball.DrawLivesLeft(gfx, board);
 	}
 }

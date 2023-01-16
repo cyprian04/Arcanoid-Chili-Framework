@@ -47,7 +47,11 @@ bool Ball::DoWallsCollision(const Board& walls)
 		pos.y -= rect.bottom - walls.bottom;
 		ReboundY();
 		collided = true;
-		GameOver = true;
+		LifeLeft--;
+		if (LifeLeft == 0)
+		{
+			GameOver = true;
+		}
 	}
 	return collided;
 }
@@ -60,6 +64,16 @@ void Ball::ReboundX()
 void Ball::ReboundY()
 {
 	vel.y = -vel.y;
+}
+
+void Ball::DrawLivesLeft(Graphics& gfx, const Board& walls) const
+{
+	int a = 20;
+	for (int i = 0; i < LifeLeft; i++)
+	{
+		gfx.DrawCircle(700 + a, 550, 10, Colors::Red);
+		a += 20;
+	}
 }
 
 RectF Ball::GetRect() const

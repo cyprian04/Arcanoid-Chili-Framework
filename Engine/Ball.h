@@ -1,5 +1,4 @@
 #pragma once
-#include "RectF.h"
 #include "Colors.h"
 #include "Graphics.h"
 #include "SpriteCodex.h"
@@ -13,6 +12,7 @@ public:
 	bool DoWallsCollision( const Board& walls);
 	void ReboundX();
 	void ReboundY();
+	void DrawLivesLeft(Graphics& gfx, const Board& walls) const;
 	RectF GetRect() const;
 	Vec2 GetPosition() const;
 	Vec2 GetVelocity() const;
@@ -23,4 +23,5 @@ private:
 	Vec2 vel;
 	Color c;
 	bool GameOver;
+	int LifeLeft = 3;
 };
