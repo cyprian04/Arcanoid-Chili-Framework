@@ -68,10 +68,10 @@ void Ball::ReboundY()
 
 void Ball::DrawLivesLeft(Graphics& gfx, const Board& walls) const
 {
-	int a = 20;
+	int a = -60;
 	for (int i = 0; i < LifeLeft; i++)
 	{
-		gfx.DrawCircle(700 + a, 550, 10, Colors::Red);
+		gfx.DrawCircle(int(walls.right + a), int(walls.bottom - 20), 10, Colors::Red);
 		a += 20;
 	}
 }
