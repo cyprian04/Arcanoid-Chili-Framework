@@ -10,7 +10,7 @@ public:
 private:
 	RectF rect;
 	Color c;
-	const float padding = 10.0f;
+	const float padding = 20.0f;
 public:
 	float left;
 	float right;

@@ -17,7 +17,7 @@ void Paddle::Draw(Graphics& gfx) const
 	gfx.DrawRect(int(rect.left + wingWidth), int(rect.top) ,int(rect.right - wingWidth), int(rect.bottom), Colors::White);
 }
 
-void Paddle::DoWallsCollision(const RectF& walls)
+void Paddle::DoWallsCollision(const Board& walls)
 {
 	const RectF rect = GetRect();
 	if (rect.left <= walls.left)

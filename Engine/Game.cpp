@@ -25,12 +25,11 @@ Game::Game(MainWindow& wnd)
 	:
 	wnd(wnd),
 	gfx(wnd),
-	walls(0.0f, float(gfx.ScreenWidth), 0.0f, float(gfx.ScreenHeight)),
+	board(Board(RectF(0.0f, float(gfx.ScreenWidth), 0.0f, float(gfx.ScreenHeight)), Colors::Red)),
 	ball(Vec2(210.0f, 250.0f), Vec2(4.0f, -6.0f), Colors::Red),
 	paddle(Vec2(400.0f, 500.0f), 30.0f, 8.0f),
 	soundPad(L"Sounds\\arkpad.wav"),
-	soundBrick(L"Sounds\\arkbrick.wav"),
-	board(Board(RectF(0.0f, float(gfx.ScreenWidth), 0.0f, float(gfx.ScreenHeight)), Colors::Red))
+	soundBrick(L"Sounds\\arkbrick.wav")
 {
 	const Vec2 TopLeft(100.0f, 50.0f);
 	Color color[4] = { Colors::Green, Colors::Red, Colors::Blue, Colors::Magenta };
@@ -71,7 +70,7 @@ void Game::UpdateModel(float dt)
 	if (GameStarted && !ball.GetGameOver())
 	{
 		paddle.Update(wnd.kbd, dt * 60.0f);
-		paddle.DoWallsCollision(walls);
+		paddle.DoWallsCollision(board);
 		ball.Update(dt * 60.0f);
 
 		int brickIndex;

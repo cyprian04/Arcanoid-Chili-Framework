@@ -48,7 +48,7 @@ private:
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
-	RectF walls;
+	Board board;
 	Ball ball;
 	Sound soundPad;
 	Sound soundBrick;
@@ -60,7 +60,6 @@ private:
 	static constexpr int nBricks = row * col;
 	Brick bricks[nBricks];
 	FrameTimer ft;
-	Board board;
 	bool GameStarted = false;
 	/********************************/
 };

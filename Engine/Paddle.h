@@ -8,7 +8,7 @@ class Paddle
 public:
 	Paddle(const Vec2& pos_in, float HalfWidth_in , float HalfHeight_in);
 	void Draw(Graphics& gfx)const;
-	void DoWallsCollision(const RectF& walls);
+	void DoWallsCollision(const Board& walls);
 	bool DoBallCollision(Ball& ball);
 	void Update(const Keyboard& kbd, float dt);
 	void ResetColldown();
