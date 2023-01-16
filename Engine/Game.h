@@ -59,5 +59,6 @@ private:
 	static constexpr int nBricks = row * col;
 	Brick bricks[nBricks];
 	FrameTimer ft;
+	bool GameStarted = false;
 	/********************************/
 };

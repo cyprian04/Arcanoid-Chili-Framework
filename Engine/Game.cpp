@@ -32,7 +32,6 @@ Game::Game( MainWindow& wnd )
 	soundBrick(L"Sounds\\arkbrick.wav")
 {
 	const Vec2 TopLeft(100.0f, 50.0f);
-
 	Color color[4] = { Colors::Green, Colors::Red, Colors::Blue, Colors::Magenta };
 
 	int i = 0;
@@ -54,8 +53,8 @@ void Game::Go()
 	if (elapsedTime > 0.0f)
 	{
 		const float dt = std::min(0.025f, elapsedTime);
-		elapsedTime -= dt;
 		UpdateModel(dt);
+		elapsedTime -= dt;
 	}
 	ComposeFrame();
 	gfx.EndFrame();
@@ -63,59 +62,75 @@ void Game::Go()
 
 void Game::UpdateModel(float dt)
 {
-	paddle.Update(wnd.kbd, dt * 60.0f);
-	paddle.DoWallsCollision(walls);
-	ball.Update(dt * 60.0f);
-
-	int brickIndex;
-	float LenghtSq;
-	bool CollisionHappend = false;
-	for (int i = 0; i < nBricks; i++)
+	if (wnd.kbd.KeyIsPressed(VK_RETURN))
 	{
-		if (bricks[i].CheckBallCollision(ball)) 
+		GameStarted = true;
+	}
+
+	if (GameStarted)
+	{
+		paddle.Update(wnd.kbd, dt * 60.0f);
+		paddle.DoWallsCollision(walls);
+		ball.Update(dt * 60.0f);
+
+		int brickIndex;
+		float LenghtSq;
+		bool CollisionHappend = false;
+		for (int i = 0; i < nBricks; i++)
 		{
-			const float NewLenghtSq = (ball.GetPosition() - bricks[i].GetCenter()).GetLengthSq();
-			if (CollisionHappend)
+			if (bricks[i].CheckBallCollision(ball)) 
 			{
-				if (NewLenghtSq < LenghtSq) 
+				const float NewLenghtSq = (ball.GetPosition() - bricks[i].GetCenter()).GetLengthSq();
+				if (CollisionHappend)
+				{
+					if (NewLenghtSq < LenghtSq) 
+					{
+						LenghtSq = NewLenghtSq;
+						brickIndex = i;
+					}
+				}
+				else
 				{
 					LenghtSq = NewLenghtSq;
+					CollisionHappend = true;
 					brickIndex = i;
 				}
 			}
-			else
-			{
-				LenghtSq = NewLenghtSq;
-				CollisionHappend = true;
-				brickIndex = i;
-			}
 		}
-	}
 
-	if (CollisionHappend)
-	{
-		paddle.ResetColldown();
-		bricks[brickIndex].ExecuteBallCollision(ball);
-		soundBrick.Play();
-	}
-	if (paddle.DoBallCollision(ball))
-	{
-		soundPad.Play();
-	}
+		if (CollisionHappend)
+		{
+			paddle.ResetColldown();
+			bricks[brickIndex].ExecuteBallCollision(ball);
+			soundBrick.Play();
+		}
+		if (paddle.DoBallCollision(ball))
+		{
+			soundPad.Play();
+		}
 
-	if (ball.DoWallsCollision(walls)) 
-	{
-		paddle.ResetColldown();
-		soundPad.Play();
+		if (ball.DoWallsCollision(walls)) 
+		{
+			paddle.ResetColldown();
+			soundPad.Play();
+		}
 	}
 }
 
 void Game::ComposeFrame()
 {
-	for (const Brick& b : bricks)
+	const Vec2 Center(400.0f, 300.0f);
+	if (!GameStarted)
 	{
-		b.Draw(gfx);
+		SpriteCodex::DrawTitle(Center, gfx);
 	}
-	ball.Draw(gfx);
-	paddle.Draw(gfx);
+	else
+	{
+		for (const Brick& b : bricks)
+		{
+			b.Draw(gfx);
+		}
+		ball.Draw(gfx);
+		paddle.Draw(gfx);
+	}
 }
