@@ -5,7 +5,8 @@ Ball::Ball(const Vec2& pos_in, const Vec2& vel_in,  Color c)
 	:
 	pos(pos_in),
 	vel(vel_in),
-	c(c)
+	c(c),
+	GameOver(false)
 {
 }
 
@@ -46,6 +47,7 @@ bool Ball::DoWallsCollision(const RectF& walls)
 		pos.y -= rect.bottom - walls.bottom;
 		ReboundY();
 		collided = true;
+		GameOver = true;
 	}
 	return collided;
 }
@@ -73,4 +75,9 @@ Vec2 Ball::GetPosition() const
 Vec2 Ball::GetVelocity() const
 {
 	return vel;
+}
+
+bool Ball::GetGameOver() const
+{
+	return GameOver;
 }

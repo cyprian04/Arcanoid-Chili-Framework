@@ -15,9 +15,11 @@ public:
 	RectF GetRect() const;
 	Vec2 GetPosition() const;
 	Vec2 GetVelocity() const;
+	bool GetGameOver() const;
 private:
 	static constexpr float radius = 7.0f;
 	Vec2 pos;
 	Vec2 vel;
 	Color c;
+	bool GameOver;
 };
