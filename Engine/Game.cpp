@@ -110,7 +110,7 @@ void Game::UpdateModel(float dt)
 			soundPad.Play();
 		}
 
-		if (ball.DoWallsCollision(walls)) 
+		if (ball.DoWallsCollision(board)) 
 		{
 			paddle.ResetColldown();
 			soundPad.Play();

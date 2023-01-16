@@ -20,7 +20,7 @@ void Ball::Draw(Graphics& gfx) const
 	SpriteCodex::DrawBall(pos, gfx);
 }
 
-bool Ball::DoWallsCollision(const RectF& walls)
+bool Ball::DoWallsCollision(const Board& walls)
 {
 	bool collided = false;
 	const RectF rect = GetRect();
