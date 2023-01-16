@@ -29,6 +29,7 @@
 #include "Sound.h"
 #include "Paddle.h"
 #include "FrameTimer.h"
+#include "Board.h"
 class Game
 {
 public:
@@ -59,6 +60,7 @@ private:
 	static constexpr int nBricks = row * col;
 	Brick bricks[nBricks];
 	FrameTimer ft;
+	Board board;
 	bool GameStarted = false;
 	/********************************/
 };

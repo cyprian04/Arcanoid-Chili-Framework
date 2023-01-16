@@ -21,15 +21,16 @@
 #include "MainWindow.h"
 #include "Game.h"
 
-Game::Game( MainWindow& wnd )
+Game::Game(MainWindow& wnd)
 	:
-	wnd( wnd ),
-	gfx( wnd ),
-	walls(0.0f,float(gfx.ScreenWidth) ,0.0f , float(gfx.ScreenHeight)),
-	ball(Vec2(210.0f, 250.0f), Vec2(3.0f, -6.0f), Colors::Red),
-	paddle(Vec2(400.0f, 500.0f), 50.0f, 10.0f),
+	wnd(wnd),
+	gfx(wnd),
+	walls(0.0f, float(gfx.ScreenWidth), 0.0f, float(gfx.ScreenHeight)),
+	ball(Vec2(210.0f, 250.0f), Vec2(4.0f, -6.0f), Colors::Red),
+	paddle(Vec2(400.0f, 500.0f), 30.0f, 8.0f),
 	soundPad(L"Sounds\\arkpad.wav"),
-	soundBrick(L"Sounds\\arkbrick.wav")
+	soundBrick(L"Sounds\\arkbrick.wav"),
+	board(Board(RectF(0.0f, float(gfx.ScreenWidth), 0.0f, float(gfx.ScreenHeight)), Colors::Red))
 {
 	const Vec2 TopLeft(100.0f, 50.0f);
 	Color color[4] = { Colors::Green, Colors::Red, Colors::Blue, Colors::Magenta };
@@ -136,5 +137,6 @@ void Game::ComposeFrame()
 		}
 		ball.Draw(gfx);
 		paddle.Draw(gfx);
+		board.DrawBorder(gfx);
 	}
 }
