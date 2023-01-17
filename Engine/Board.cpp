@@ -7,7 +7,7 @@ Board::Board(const RectF& rect_in, Color c_in)
 	right(rect_in.right - padding),
 	top(rect_in.top  + padding),
 	bottom(rect_in.bottom - padding),
-	TopLeft(rect_in.left + padding, rect_in.top + padding),
+	TopLeft(int(Graphics::ScreenWidth /8), rect_in.top + padding + 30),
 	c(c_in)
 {
 }
