@@ -24,8 +24,7 @@ private:
 	int LifeLeft = 3;
 	std::random_device rd;
 	std::mt19937 rng;
-	std::uniform_real_distribution<float> Xlos;
-	std::uniform_real_distribution<float> Ylos;
+	std::uniform_real_distribution<float> los;
 	Vec2 pos;
 	Vec2 vel;
 	Color c;

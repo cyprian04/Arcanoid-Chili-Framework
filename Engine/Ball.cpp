@@ -8,8 +8,7 @@ Ball::Ball(const Vec2& pos_in, const Vec2& vel_in,  Color c)
 	c(c),
 	GameOver(false),
 	rng(rd()),
-	Xlos(4.0f, 7.0f),
-	Ylos(4.0f, 7.0f)
+	los(4.0f, 7.0f)
 {
 }
 
@@ -63,11 +62,11 @@ void Ball::ReboundX()
 {
 	if (vel.x > 0.0f)
 	{
-		vel.x = -Xlos(rng);
+		vel.x = -los(rng);
 	}
 	else
 	{
-		vel.x = Xlos(rng);
+		vel.x = los(rng);
 	}
 }
 
@@ -75,11 +74,11 @@ void Ball::ReboundY()
 {
 	if (vel.y > 0.0f)
 	{
-		vel.y = -Ylos(rng);
+		vel.y = -los(rng);
 	}
 	else
 	{
-		vel.y = Ylos(rng);
+		vel.y = los(rng);
 	}
 }
 
