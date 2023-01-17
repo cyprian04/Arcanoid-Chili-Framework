@@ -6,7 +6,10 @@ Ball::Ball(const Vec2& pos_in, const Vec2& vel_in,  Color c)
 	pos(pos_in),
 	vel(vel_in),
 	c(c),
-	GameOver(false)
+	GameOver(false),
+	rng(rd()),
+	Xlos(4.0f, 7.0f),
+	Ylos(4.0f, 7.0f)
 {
 }
 
@@ -58,12 +61,26 @@ bool Ball::DoWallsCollision(const Board& walls)
 
 void Ball::ReboundX()
 {
-	vel.x = -vel.x;
+	if (vel.x > 0.0f)
+	{
+		vel.x = -Xlos(rng);
+	}
+	else
+	{
+		vel.x = Xlos(rng);
+	}
 }
 
 void Ball::ReboundY()
 {
-	vel.y = -vel.y;
+	if (vel.y > 0.0f)
+	{
+		vel.y = -Ylos(rng);
+	}
+	else
+	{
+		vel.y = Ylos(rng);
+	}
 }
 
 void Ball::DrawLivesLeft(Graphics& gfx, const Board& walls) const

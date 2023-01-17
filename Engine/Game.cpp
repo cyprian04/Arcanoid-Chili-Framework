@@ -27,7 +27,7 @@ Game::Game(MainWindow& wnd)
 	gfx(wnd),
 	board(Board(RectF(0.0f, float(gfx.ScreenWidth), 0.0f, float(gfx.ScreenHeight)), Colors::Blue)),
 	ball(Vec2(210.0f, 250.0f), Vec2(4.0f, -6.0f), Colors::Red),
-	paddle(Vec2(400.0f, board.bottom - 40), 30.0f, 8.0f),
+	paddle(Vec2(400.0f, board.bottom - 40), 35.0f, 6.0f),
 	soundPad(L"Sounds\\arkpad.wav"),
 	soundBrick(L"Sounds\\arkbrick.wav")
 {

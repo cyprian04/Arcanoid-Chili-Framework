@@ -3,6 +3,7 @@
 #include "Graphics.h"
 #include "SpriteCodex.h"
 #include "Board.h"
+#include <random>
 class Ball
 {
 public:
@@ -19,9 +20,14 @@ public:
 	bool GetGameOver() const;
 private:
 	static constexpr float radius = 7.0f;
+	bool GameOver;
+	int LifeLeft = 3;
+	std::random_device rd;
+	std::mt19937 rng;
+	std::uniform_real_distribution<float> Xlos;
+	std::uniform_real_distribution<float> Ylos;
 	Vec2 pos;
 	Vec2 vel;
 	Color c;
-	bool GameOver;
-	int LifeLeft = 3;
+	
 };
