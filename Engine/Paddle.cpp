@@ -63,11 +63,11 @@ void Paddle::Update(const Keyboard& kbd, float dt)
 {
 	if (kbd.KeyIsPressed(VK_LEFT))
 	{
-		pos.x -=6 * dt;
+		pos.x -=10 * dt;
 	}
 	if (kbd.KeyIsPressed(VK_RIGHT))
 	{
-		pos.x+=6 * dt;
+		pos.x+=10 * dt;
 	}
 }
 

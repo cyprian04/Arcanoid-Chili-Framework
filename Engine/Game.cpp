@@ -27,11 +27,10 @@ Game::Game(MainWindow& wnd)
 	gfx(wnd),
 	board(Board(RectF(0.0f, float(gfx.ScreenWidth), 0.0f, float(gfx.ScreenHeight)), Colors::Blue)),
 	ball(Vec2(210.0f, 250.0f), Vec2(4.0f, -6.0f), Colors::Red),
-	paddle(Vec2(400.0f, 500.0f), 50.0f, 8.0f),
+	paddle(Vec2(400.0f, board.bottom - 40), 30.0f, 8.0f),
 	soundPad(L"Sounds\\arkpad.wav"),
 	soundBrick(L"Sounds\\arkbrick.wav")
 {
-	const Vec2 TopLeft(100.0f, 50.0f);
 	Color color[4] = { Colors::Green, Colors::Red, Colors::Yellow, Colors::Magenta };
 
 	int i = 0;
@@ -39,7 +38,7 @@ Game::Game(MainWindow& wnd)
 	{
 		for (int y = 0; y <col; y++)
 		{
-			bricks[i] = Brick(RectF(TopLeft + Vec2(x * width, y * height), width, height), color[y]);
+			bricks[i] = Brick(RectF(board.TopLeft + Vec2(x * width, y * height), width, height), color[y]);
 			i++;
 		}
 	}

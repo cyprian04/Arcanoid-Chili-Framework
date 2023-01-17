@@ -7,6 +7,7 @@ Board::Board(const RectF& rect_in, Color c_in)
 	right(rect_in.right - padding),
 	top(rect_in.top  + padding),
 	bottom(rect_in.bottom - padding),
+	TopLeft(rect_in.left + padding, rect_in.top + padding),
 	c(c_in)
 {
 }
