@@ -42,6 +42,11 @@ Game::Game(MainWindow& wnd)
 			i++;
 		}
 	}
+
+	for (int i = 0; i < nPoo; i++)
+	{
+		poos[i].Init(Vec2(300,300), Vec2(1,1));
+	}
 }
 
 void Game::Go()
@@ -71,7 +76,6 @@ void Game::UpdateModel(float dt)
 		paddle.Update(wnd.kbd, dt * 60.0f);
 		paddle.DoWallsCollision(board);
 		ball.Update(dt * 60.0f);
-
 		int brickIndex;
 		float LenghtSq;
 		bool CollisionHappend = false;
@@ -113,6 +117,11 @@ void Game::UpdateModel(float dt)
 			paddle.ResetColldown();
 			soundPad.Play();
 		}
+
+		for( Poo& p: poos)
+		{
+			p.Update(dt * 60.0f);
+		}
 	}
 }
 
@@ -132,6 +141,11 @@ void Game::ComposeFrame()
 		for (const Brick& b : bricks)
 		{
 			b.Draw(gfx);
+		}
+
+		for (const Poo& p : poos)
+		{
+			p.Draw(gfx);
 		}
 		ball.Draw(gfx);
 		paddle.Draw(gfx);

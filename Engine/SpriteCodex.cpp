@@ -27746,7 +27746,7 @@ void SpriteCodex::DrawReady(const Vec2& center, Graphics& gfx)
 }
 
 
-
+*/
 void SpriteCodex::DrawPoo(const Vec2& center, Graphics& gfx)
 {
 	const int x_int = int(center.x) - 12;
@@ -27984,4 +27984,3 @@ void SpriteCodex::DrawPoo(const Vec2& center, Graphics& gfx)
 	gfx.PutPixel(5 + x_int, 23 + y_int, 51, 28, 0);
 	gfx.PutPixel(6 + x_int, 23 + y_int, 51, 28, 0);
 }
-*/

@@ -30,6 +30,7 @@
 #include "Paddle.h"
 #include "FrameTimer.h"
 #include "Board.h"
+#include "Poo.h"
 class Game
 {
 public:
@@ -60,6 +61,8 @@ private:
 	static constexpr int nBricks = row * col;
 	Brick bricks[nBricks];
 	FrameTimer ft;
+	static constexpr int nPoo = 1;
+	Poo poos[1];
 	bool GameStarted = false;
 	/********************************/
 };
