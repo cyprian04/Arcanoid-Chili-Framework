@@ -67,7 +67,7 @@ private:
 	
 	Brick bricks[nBricks];
 	FrameTimer ft;
-	static constexpr int nPoo = 2;
+	static constexpr int nPoo = 6;
 	Poo poos[nPoo];
 	bool GameStarted = false;
 	/********************************/
