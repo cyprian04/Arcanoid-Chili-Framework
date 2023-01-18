@@ -11,17 +11,19 @@ public:
 	void Update(float dt);
 	void Draw(Graphics& gfx) const;
 	void DoWallsCollision(const Board& walls);
-	bool DoPaddleCollision(Paddle& pad, Ball& ball);
+	bool DoBallCollision(Ball& ball);
+	bool DoPaddleCollision(const Paddle& pad, Ball& ball);
 	void ReboundX();
 	void ReboundY();
 	RectF GetRect();
 public:
-	static constexpr float radius = 12.0f;
 	std::random_device rd;
 	std::mt19937 rng;
 	std::uniform_real_distribution<float> PosLos;
 	std::uniform_real_distribution<float> VelLos;
 private:
+	bool destroy = false;
+	static constexpr float radius = 12.0f;
 	Vec2 pos;
 	Vec2 vel;
 };

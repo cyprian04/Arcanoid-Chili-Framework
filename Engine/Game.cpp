@@ -27,7 +27,7 @@ Game::Game(MainWindow& wnd)
 	gfx(wnd),
 	board(Board(RectF(0.0f, float(gfx.ScreenWidth), 0.0f, float(gfx.ScreenHeight)), Colors::Blue)),
 	ball(Vec2(210.0f, 250.0f), Vec2(4.0f, -6.0f), Colors::Red),
-	paddle(Vec2(400.0f, board.bottom - 40), 35.0f, 6.0f),
+	paddle(Vec2(400.0f, board.bottom - 50), 35.0f, 6.0f),
 	soundPad(L"Sounds\\arkpad.wav"),
 	soundBrick(L"Sounds\\arkbrick.wav")
 {
@@ -122,6 +122,7 @@ void Game::UpdateModel(float dt)
 		{
 			p.Update(dt * 60.0f);
 			p.DoWallsCollision(board);
+			p.DoBallCollision(ball);
 			p.DoPaddleCollision(paddle, ball);
 		}
 	}
@@ -136,7 +137,6 @@ void Game::ComposeFrame()
 	}
 	else  
 	{
-
 		if (ball.GetGameOver())
 		{
 		  SpriteCodex::DrawGameOver(Center, gfx);

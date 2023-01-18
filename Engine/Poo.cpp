@@ -4,7 +4,7 @@ Poo::Poo()
 	:
 	rng(rd()),
 	PosLos(250, 450),
-	VelLos(-3.0f, 3.0f)
+	VelLos(-2.0f, 2.0f)
 {
 }
 void Poo::Init(const Vec2& pos_in, const Vec2& vel_in)
@@ -20,7 +20,10 @@ void Poo::Update(float dt)
 
 void Poo::Draw(Graphics& gfx) const
 {
-	SpriteCodex::DrawPoo(pos, gfx);
+	if (!destroy)
+	{
+		SpriteCodex::DrawPoo(pos, gfx);
+	}
 }
 
 void Poo::DoWallsCollision(const Board& walls)
@@ -48,16 +51,29 @@ void Poo::DoWallsCollision(const Board& walls)
 	}
 }
 
-bool Poo::DoPaddleCollision(Paddle& pad, Ball& ball)
+bool Poo::DoBallCollision(Ball& ball)
+{
+	if (!destroy)
+	{
+		const RectF rect = GetRect();
+		if (rect.IsOverLapping(ball.GetRect()))
+		{
+			destroy = true;
+			return true;
+		}
+	}
+	return false;
+}
+
+bool Poo::DoPaddleCollision(const Paddle& pad, Ball& ball)
 {
 	const RectF rect = GetRect();
-	if (rect.IsOverLapping(pad.GetRect()))
+	if (rect.IsOverLapping(pad.GetRect()) && !destroy)
 	{
 		return ball.SetGameOver();
 	}
 	return false;
 }
-
 
 void Poo::ReboundX()
 {
