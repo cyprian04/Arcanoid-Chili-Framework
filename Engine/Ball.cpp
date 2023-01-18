@@ -111,3 +111,9 @@ bool Ball::GetGameOver() const
 {
 	return GameOver;
 }
+
+bool Ball::SetGameOver()
+{
+	GameOver = true;
+	return GameOver;
+}

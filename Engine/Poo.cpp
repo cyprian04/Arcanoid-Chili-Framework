@@ -48,6 +48,17 @@ void Poo::DoWallsCollision(const Board& walls)
 	}
 }
 
+bool Poo::DoPaddleCollision(Paddle& pad, Ball& ball)
+{
+	const RectF rect = GetRect();
+	if (rect.IsOverLapping(pad.GetRect()))
+	{
+		return ball.SetGameOver();
+	}
+	return false;
+}
+
+
 void Poo::ReboundX()
 {
 	vel.x = -vel.x;

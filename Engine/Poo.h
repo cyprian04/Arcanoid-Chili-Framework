@@ -1,7 +1,7 @@
 #pragma once
 #include "SpriteCodex.h"
 #include "Graphics.h"
-#include "Ball.h"
+#include "Paddle.h"
 
 class Poo
 {
@@ -11,6 +11,7 @@ public:
 	void Update(float dt);
 	void Draw(Graphics& gfx) const;
 	void DoWallsCollision(const Board& walls);
+	bool DoPaddleCollision(Paddle& pad, Ball& ball);
 	void ReboundX();
 	void ReboundY();
 	RectF GetRect();

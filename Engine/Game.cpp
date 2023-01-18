@@ -122,6 +122,7 @@ void Game::UpdateModel(float dt)
 		{
 			p.Update(dt * 60.0f);
 			p.DoWallsCollision(board);
+			p.DoPaddleCollision(paddle, ball);
 		}
 	}
 }
@@ -133,12 +134,14 @@ void Game::ComposeFrame()
 	{
 		SpriteCodex::DrawTitle(Center, gfx);
 	}
-	else if (ball.GetGameOver())
+	else  
 	{
-		SpriteCodex::DrawGameOver(Center, gfx);
-	}
-	else
-	{
+
+		if (ball.GetGameOver())
+		{
+		  SpriteCodex::DrawGameOver(Center, gfx);
+		}
+
 		for (const Brick& b : bricks)
 		{
 			b.Draw(gfx);

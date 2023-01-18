@@ -18,6 +18,7 @@ public:
 	Vec2 GetPosition() const;
 	Vec2 GetVelocity() const;
 	bool GetGameOver() const;
+	bool SetGameOver();
 private:
 	static constexpr float radius = 7.0f;
 	bool GameOver;
