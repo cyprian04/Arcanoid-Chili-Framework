@@ -1,5 +1,12 @@
 #include "Poo.h"
 
+Poo::Poo() 
+	:
+	rng(rd()),
+	PosLos(250, 450),
+	VelLos(-3.0f, 3.0f)
+{
+}
 void Poo::Init(const Vec2& pos_in, const Vec2& vel_in)
 {
 	pos = pos_in;

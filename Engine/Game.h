@@ -50,10 +50,6 @@ private:
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
-	std::random_device rd;
-	std::mt19937 rng;
-	std::uniform_real_distribution<float> PosLos;
-	std::uniform_real_distribution<float> VelLos;
 	Board board;
 	Ball ball;
 	Sound soundPad;
@@ -67,7 +63,7 @@ private:
 	
 	Brick bricks[nBricks];
 	FrameTimer ft;
-	static constexpr int nPoo = 6;
+	static constexpr int nPoo = 3;
 	Poo poos[nPoo];
 	bool GameStarted = false;
 	/********************************/

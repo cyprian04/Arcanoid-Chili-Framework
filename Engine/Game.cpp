@@ -25,9 +25,6 @@ Game::Game(MainWindow& wnd)
 	:
 	wnd(wnd),
 	gfx(wnd),
-	rng(rd()),
-	PosLos(250, 450),
-	VelLos(1.0f, 3.0f),
 	board(Board(RectF(0.0f, float(gfx.ScreenWidth), 0.0f, float(gfx.ScreenHeight)), Colors::Blue)),
 	ball(Vec2(210.0f, 250.0f), Vec2(4.0f, -6.0f), Colors::Red),
 	paddle(Vec2(400.0f, board.bottom - 40), 35.0f, 6.0f),
@@ -48,7 +45,7 @@ Game::Game(MainWindow& wnd)
 
 	for (int i = 0; i < nPoo; i++)
 	{
-		poos[i].Init(Vec2(PosLos(rng), PosLos(rng)), Vec2(VelLos(rng), VelLos(rng)));
+		poos[i].Init(Vec2(poos[i].PosLos(poos[i].rng), poos[i].PosLos(poos[i].rng)), Vec2(poos[i].VelLos(poos[i].rng), poos[i].VelLos(poos[i].rng)));
 	}
 }
 
