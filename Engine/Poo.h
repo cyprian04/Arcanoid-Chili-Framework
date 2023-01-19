@@ -8,6 +8,7 @@ class Poo
 public:
 	Poo();
 	void Respawn(const Board& brd);
+	void Respawn(const Board& brd, int nextCord);
 	void Update(float dt);
 	void Draw(Graphics& gfx) const;
 	void DoWallsCollision(const Board& walls);
@@ -22,6 +23,7 @@ public:
 	std::uniform_real_distribution<float> VelLos;
 private:
 	static constexpr float radius = 12.0f;
+	bool nextCord;
 	Vec2 pos;
 	Vec2 vel;
 };

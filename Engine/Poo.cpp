@@ -3,16 +3,45 @@
 Poo::Poo()
 	:
 	rng(rd()),
-	VelLos(-2.0f, 2.0f)
+	VelLos(-2.0f, 2.0f),
+	nextCord( false)
 {
 }
 
 void Poo::Respawn(const Board& brd)
 {
-	const Vec2 PosDt = brd.TopLeft;
-	pos = PosDt;
 	const Vec2 VelDt(VelLos(rng), VelLos(rng));
 	vel = VelDt;
+
+	if (!nextCord)
+	{
+		const Vec2 PosDt = brd.TopLeft;
+		pos = PosDt;
+		nextCord = true;
+	}
+	else
+	{
+		const Vec2 PosDt = brd.TopRight;
+		pos = PosDt;
+		nextCord = false;
+	}
+}
+
+void Poo::Respawn(const Board& brd, int nextCord)
+{
+	const Vec2 VelDt(VelLos(rng), VelLos(rng));
+	vel = VelDt;
+
+	if (nextCord == 0)
+	{
+		const Vec2 PosDt = brd.TopLeft;
+		pos = PosDt;
+	}
+	else if(nextCord == 1)
+	{
+		const Vec2 PosDt = brd.TopRight;
+		pos = PosDt;
+	}
 }
 
 void Poo::Update(float dt)

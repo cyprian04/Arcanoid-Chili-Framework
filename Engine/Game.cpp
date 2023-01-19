@@ -42,11 +42,8 @@ Game::Game(MainWindow& wnd)
 			i++;
 		}
 	}
-
-	for (int i = 0; i < nPoo; i++)
-	{
-		poos[i].Respawn(board);
-	}
+	poos[0].Respawn(board, 0);	
+	poos[1].Respawn(board, 1);
 }
 
 void Game::Go()

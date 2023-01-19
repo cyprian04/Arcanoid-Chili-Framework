@@ -9,9 +9,10 @@ public:
 	void DrawBorder(Graphics& gfx);
 private:
 	Color c;
-	const float padding = 30.0f;
+	const float padding = 0.0f;
 public:
 	const Vec2 TopLeft;
+	const Vec2 TopRight;
 	float left;
 	float right;
 	float top;

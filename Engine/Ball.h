@@ -11,15 +11,16 @@ public:
 	void Update(float dt);
 	void Draw(Graphics& gfx) const;
 	bool DoWallsCollision( const Board& walls);
+	bool GetGameOver() const;
+	void DrawLivesLeft(Graphics& gfx, const Board& walls) const;
 	void ReboundX();
 	void ReboundY();
-	void DrawLivesLeft(Graphics& gfx, const Board& walls) const;
+	bool SetGameOver();
+	int IncreseLives();
 	RectF GetRect() const;
 	Vec2 GetPosition() const;
 	Vec2 GetVelocity() const;
-	bool GetGameOver() const;
-	bool SetGameOver();
-	int IncreseLives();
+	
 private:
 	static constexpr float radius = 7.0f;
 	bool GameOver;

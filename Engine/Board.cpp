@@ -8,6 +8,7 @@ Board::Board(const RectF& rect_in, Color c_in)
 	top(rect_in.top  + padding),
 	bottom(rect_in.bottom - padding),
 	TopLeft(int(Graphics::ScreenWidth /8), rect_in.top + padding + 30),
+	TopRight(int(Graphics::ScreenWidth /1) - 100, rect_in.top + padding + 30),
 	c(c_in)
 {
 }
