@@ -60,10 +60,9 @@ private:
 	static constexpr int row = 12;
 	static constexpr int col = 4;
 	static constexpr int nBricks = row * col;
-	
 	Brick bricks[nBricks];
 	FrameTimer ft;
-	static constexpr int nPoo = 3;
+	static constexpr int nPoo = 2;
 	Poo poos[nPoo];
 	bool GameStarted = false;
 	/********************************/

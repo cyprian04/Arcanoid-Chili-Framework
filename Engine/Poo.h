@@ -7,7 +7,7 @@ class Poo
 {
 public:
 	Poo();
-	void Init(const Vec2& pos_in, const Vec2& vel_in);
+	void Respawn(const Board& brd);
 	void Update(float dt);
 	void Draw(Graphics& gfx) const;
 	void DoWallsCollision(const Board& walls);
@@ -19,10 +19,8 @@ public:
 public:
 	std::random_device rd;
 	std::mt19937 rng;
-	std::uniform_real_distribution<float> PosLos;
 	std::uniform_real_distribution<float> VelLos;
 private:
-	bool destroy = false;
 	static constexpr float radius = 12.0f;
 	Vec2 pos;
 	Vec2 vel;

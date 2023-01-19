@@ -45,7 +45,7 @@ Game::Game(MainWindow& wnd)
 
 	for (int i = 0; i < nPoo; i++)
 	{
-		poos[i].Init(Vec2(poos[i].PosLos(poos[i].rng), poos[i].PosLos(poos[i].rng)), Vec2(poos[i].VelLos(poos[i].rng), poos[i].VelLos(poos[i].rng)));
+		poos[i].Respawn(board);
 	}
 }
 
@@ -122,8 +122,11 @@ void Game::UpdateModel(float dt)
 		{
 			p.Update(dt * 60.0f);
 			p.DoWallsCollision(board);
-			p.DoBallCollision(ball);
 			p.DoPaddleCollision(paddle, ball);
+			if (p.DoBallCollision(ball))
+			{
+				p.Respawn(board);
+			}
 		}
 	}
 }
@@ -151,9 +154,9 @@ void Game::ComposeFrame()
 		{
 			p.Draw(gfx);
 		}
-		ball.Draw(gfx);
 		paddle.Draw(gfx);
 		board.DrawBorder(gfx);
+		ball.Draw(gfx);
 		ball.DrawLivesLeft(gfx, board);
 	}
 }
