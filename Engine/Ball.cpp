@@ -117,3 +117,12 @@ bool Ball::SetGameOver()
 	GameOver = true;
 	return GameOver;
 }
+
+int Ball::IncreseLives()
+{
+	if (LifeLeft < 3)
+	{
+		LifeLeft++;
+	}
+	return LifeLeft ;
+}

@@ -55,6 +55,7 @@ bool Poo::DoBallCollision(Ball& ball)
 		const RectF rect = GetRect();
 		if (rect.IsOverLapping(ball.GetRect()))
 		{
+			ball.IncreseLives();
 			return true;
 		}
 	return false;
