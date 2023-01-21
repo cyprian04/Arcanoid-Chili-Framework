@@ -42,6 +42,18 @@ Game::Game(MainWindow& wnd)
 			i++;
 		}
 	}
+
+	int j = 0;
+	int spacebettwen = 0;
+	for (int x = 0; x < row2; x++)
+	{
+		for (int y = 0; y < col2; y++)
+		{
+			StaticBricks[j] = Brick(RectF(board.AdjustBrickPos +  Vec2(spacebettwen + x * width, y * height), width, height), color[3]);
+			j++;
+			spacebettwen += 60;
+		}
+	}
 	poos[0].Respawn(board, 0);	
 	poos[1].Respawn(board, 1);
 }
@@ -153,6 +165,11 @@ void Game::ComposeFrame()
 		}
 
 		for (const Brick& b : bricks)
+		{
+			b.Draw(gfx);
+		}
+
+		for (const Brick& b : StaticBricks)
 		{
 			b.Draw(gfx);
 		}

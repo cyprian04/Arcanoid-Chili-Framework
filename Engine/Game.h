@@ -58,9 +58,13 @@ private:
 	float width = 50.0f;
 	float height = 20.0f;
 	static constexpr int row = 12;
-	static constexpr int col = 4;
+	static constexpr int col = 3;
 	static constexpr int nBricks = row * col;
 	Brick bricks[nBricks];
+	static constexpr int row2 = 6;
+	static constexpr int col2 = 1;
+	static constexpr int NumberOfStaticBricks = row2 * col2;
+	Brick StaticBricks[NumberOfStaticBricks];
 	FrameTimer ft;
 	static constexpr int nPoo = 2;
 	Poo poos[nPoo];

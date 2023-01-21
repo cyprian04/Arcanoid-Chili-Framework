@@ -7,9 +7,10 @@ Board::Board(const RectF& rect_in, Color c_in)
 	right(rect_in.right - padding),
 	top(rect_in.top  + padding),
 	bottom(rect_in.bottom - padding),
+	c(c_in),
 	TopLeft(int(Graphics::ScreenWidth /8), rect_in.top + padding + 30),
 	TopRight(int(Graphics::ScreenWidth /1) - 100, rect_in.top + padding + 30),
-	c(c_in)
+	AdjustBrickPos(int(Graphics::ScreenWidth / 8), rect_in.top + padding + 130)
 {
 }
 
