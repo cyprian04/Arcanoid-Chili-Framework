@@ -22,7 +22,7 @@ bool Brick::CheckBallCollision(Ball& ball) const
 	return !destroyed && rect.IsOverLapping(ball.GetRect());
 }
 
-void Brick::ExecuteBallCollision(Ball& ball)
+void Brick::ExecuteBallCollision(Ball& ball, bool destroyable)
 {
 	assert(CheckBallCollision(ball));
 	Vec2 ballPos = ball.GetPosition();
@@ -39,7 +39,11 @@ void Brick::ExecuteBallCollision(Ball& ball)
 	{
 		ball.ReboundX();
 	}
-	destroyed = true;
+
+	if (destroyable)
+	{
+		destroyed = true;
+	}
 }
 
 Vec2 Brick::GetCenter() const

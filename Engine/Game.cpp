@@ -113,8 +113,17 @@ void Game::UpdateModel(float dt)
 		if (CollisionHappend)
 		{
 			paddle.ResetColldown();
-			bricks[brickIndex].ExecuteBallCollision(ball);
+			bricks[brickIndex].ExecuteBallCollision(ball, true);
 			soundBrick.Play();
+		}
+
+		for ( Brick& b: StaticBricks )
+		{
+			if (b.CheckBallCollision(ball))
+			{
+				paddle.ResetColldown();
+				b.ExecuteBallCollision(ball, false);
+			}
 		}
 		if (paddle.DoBallCollision(ball))
 		{
