@@ -64,6 +64,8 @@ private:
 	FrameTimer ft;
 	static constexpr int nPoo = 2;
 	Poo poos[nPoo];
+	int counter = 100;
+	bool BeginGame = false;
 	bool GameStarted = false;
 	/********************************/
 };

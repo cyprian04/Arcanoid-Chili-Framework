@@ -26268,8 +26268,8 @@ void SpriteCodex::DrawGameOver(const Vec2& center, Graphics& gfx)
 	gfx.PutPixel(82 + x, 63 + y, 0, 146, 14);
 	gfx.PutPixel(83 + x, 63 + y, 0, 146, 14);
 }
-// wa¿ne elementy, mo¿e wykorzystam potem //
-/*
+
+
 void SpriteCodex::DrawReady(const Vec2& center, Graphics& gfx)
 {
 	const int x = int(center.x) - 52;
@@ -27745,8 +27745,6 @@ void SpriteCodex::DrawReady(const Vec2& center, Graphics& gfx)
 	gfx.PutPixel(103 + x, 18 + y, 153, 65, 0);
 }
 
-
-*/
 void SpriteCodex::DrawPoo(const Vec2& center, Graphics& gfx)
 {
 	const int x_int = int(center.x) - 12;

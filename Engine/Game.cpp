@@ -68,7 +68,7 @@ void Game::UpdateModel(float dt)
 		GameStarted = true;
 	}
 
-	if (GameStarted && !ball.GetGameOver())
+	if (!ball.GetGameOver() && BeginGame)
 	{
 		paddle.Update(wnd.kbd, dt * 60.0f);
 		paddle.DoWallsCollision(board);
@@ -135,7 +135,17 @@ void Game::ComposeFrame()
 	{
 		SpriteCodex::DrawTitle(Center, gfx);
 	}
-	else  
+	if (GameStarted && counter <500)
+	{
+		counter++;
+		SpriteCodex::DrawReady(Center, gfx);
+		if (counter == 500)
+		{
+			BeginGame = true;
+		}
+	}
+
+	else if (BeginGame)
 	{
 		if (ball.GetGameOver())
 		{
