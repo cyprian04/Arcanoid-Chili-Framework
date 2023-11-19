@@ -9,7 +9,7 @@ public:
 	void DrawBorder(Graphics& gfx);
 private:
 	Color c;
-	const float padding = 0.0f; // pamiêtaj!!!! dodaæ assert aby jakiœ kasztan nie da³ paddingu wiêkszego ni¿ 80.0f //
+	const float padding = 0.0f;
 public:
 	const Vec2 TopLeft;
 	const Vec2 TopRight;
